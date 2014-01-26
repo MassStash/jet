@@ -21,7 +21,7 @@ make installclean && rm -rf out/target/product/*/*md5sum
 
 ## Current Build Date
 BDATE=`date +%m-%d`
-OUT=~/AndroidDev/octostash/out
+COPY_DIR=~/AndroidDev/octostash/out
 
 if [ $1 = "y" ]; then
 PUSH=true
