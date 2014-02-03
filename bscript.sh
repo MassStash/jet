@@ -13,7 +13,7 @@ BVARIANT=$3
 source build/envsetup.sh
 
 echo "Setting Lunch Menu to ${BVARIANT} bidness"
-lunch carbon_${BVARIANT}-userdebug
+lunch oct_${BVARIANT}-userdebug
 
 ## Clean Up Previous Builds as well as old md5sum files
 make installclean && rm -rf out/target/product/*/*md5sum
