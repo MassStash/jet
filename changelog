@@ -11,7 +11,7 @@ fi
 touch $Changelog
 
 # Print something to build output
-echo "Generating changelog..."
+echo "Generating changelog bitches..."
 
 for i in $(seq 7); 
 do

@@ -7,7 +7,7 @@
 PUSH=$1
 BSPEED=$2
 : ${PUSH:=false}
-: ${BSPEED:="10"}
+: ${BSPEED:="21"}
 BVARIANT=$3
 
 source build/envsetup.sh
@@ -28,9 +28,10 @@ else
 PUSH=false
 fi
 
-if [ ! -d "${COPY_DIR}/${BDATE}" ]; then
-	echo "Creating directory for ${COPY_DIR}/${BDATE}"
-	mkdir -p ${COPY_DIR}/${BDATE}
+if [ ! -d "${COPY_DIR}/${BDATE}/${BVARIANT}" ]; then
+	echo "Creating directory for ${COPY_DIR}/${BDATE}/${BVARIANT}"
+	mkdir -p ${COPY_DIR}/${BDATE}/${BVARIANT}
+	chmod 775 ${COPY_DIR}/${BDATE}/${BVARIANT}
 fi
 
 echo "Starting brunch with ${BSPEED} threads for ${COPY_DIR}"
@@ -39,7 +40,7 @@ echo "Pushing to Remote after build!"
 fi
 # Build command
 brunch ${BVARIANT} -j${BSPEED}
-find ${COPY_DIR} '(' -name 'CARBON-KK*' -size +150000 ')' -print0 |
+find ${OUT} '(' -name 'CARBON-KK*' -size +150000 ')' -print0 |
         xargs --null md5sum |
         while read CHECKSUM FILENAME
         do
@@ -48,9 +49,9 @@ find ${COPY_DIR} '(' -name 'CARBON-KK*' -size +150000 ')' -print0 |
 		else
 			if ! $PUSH; then
 			echo "Moving to Copybox"
-                	cp ${FILENAME} ${COPY_DIR}/${BDATE}/${FILENAME##*/}
-                	cp "${FILENAME}.md5sum" ${COPY_DIR}/${BDATE}/${FILENAME##*/}.md5
+                	cp ${FILENAME} ${COPY_DIR}/${BDATE}/${BVARIANT}/${FILENAME##*/}
+                	cp "${FILENAME}.md5sum" ${COPY_DIR}/${BDATE}/${BVARIANT}/${FILENAME##*/}.md5
 			fi
-		fi
+	        fi
         done
 
