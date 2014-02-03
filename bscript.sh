@@ -40,7 +40,7 @@ echo "Pushing to Remote after mutha fukin' build!"
 fi
 # Build command
 brunch ${BVARIANT} -j${BSPEED}
-find ${OUT} '(' -name 'oct*' -size +150000 ')' -print0 |
+find ${OUT} '(' -name 'Oct*' -size +150000 ')' -print0 |
         xargs --null md5sum |
         while read CHECKSUM FILENAME
         do
