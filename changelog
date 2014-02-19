@@ -30,4 +30,4 @@ done
 
 # Let squisher handle the zipping part
 #cp $Changelog $OUT/repack.d/ota/
-cp $Changelog ~/Desktop/Copy/AndroidDev/ROMz/OctOS
+cp $Changelog ~/home/scott/MassStashBox

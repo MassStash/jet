@@ -7,7 +7,7 @@
 PUSH=$1
 BSPEED=$2
 : ${PUSH:=false}
-: ${BSPEED:="10"}
+: ${BSPEED:="18"}
 BVARIANT=$3
 
 source build/envsetup.sh
