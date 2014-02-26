@@ -64,9 +64,9 @@ find ${OUT} '(' -name 'Oct*' -size +150000 ')' -print0 |
 			echo "Updating manifest for ${OTAFILE}"
 	                sed -i "s/Oct-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]-${BVARIANT}/${OTAFILE}/g" ota.xml
      			echo "Removing existing file from remote."
-			sleep 2
+			sleep 15
 			ssh ${RACF}@${RHOST} "rm -rf ${ROUT}/${BVARIANT}/*.zip" < /dev/null
-			sleep 2
+			sleep 15
      			echo "Pushing new file ${OTAFILE} to remote"
                         scp ${FILENAME} ${RACF}@${RHOST}:${ROUT}/${BVARIANT}
 			echo "Pushing new OTA manifest to remote"
