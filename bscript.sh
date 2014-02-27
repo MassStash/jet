@@ -49,8 +49,8 @@ find ${OUT} '(' -name 'Oct*' -size +150000 ')' -print0 |
 		else
 			if ! $PUSH; then
 			echo "Moving to Copybox G"
-                	cp ${FILENAME} ${COPY_DIR}/${BDATE}/${BVARIANT}/${FILENAME}
-                	cp "${FILENAME}.md5sum" ${COPY_DIR}/${BDATE}/${BVARIANT}/${FILENAME}.md5sum
+                	cp ${FILENAME} ${COPY_DIR}/${BDATE}/${BVARIANT}/${FILENAME##*/}
+                	cp "${FILENAME}.md5sum" ${COPY_DIR}/${BDATE}/${BVARIANT}/${FILENAME##*/}.md5sum
 			fi
 	        fi
         done
